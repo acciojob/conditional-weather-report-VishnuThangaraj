@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import WeatherDisplay from "./WeatherDisplay";
+import React from "react";
+import "./../styles/App.css";
 
 const App = () => {
-  const [weather, setWeather] = useState({ temperature: 0, conditions: "" });
-
-  useEffect(() => {
-    // Simulating fetching weather data
-    setWeather({ temperature: 25, conditions: "Sunny" });
-  }, []);
+  const weather = { temperature: 25, conditions: "Sunny" };
+  const temperatureColor = weather.temperature > 20 ? "red" : "blue";
 
   return (
-    <div>
-      <WeatherDisplay weather={weather} />
+    <div id="main">
+      <h2>Weather Report</h2>
+      <p>
+        Temperature:{" "}
+        <span style={{ color: temperatureColor }}>{weather.temperature}</span>
+      </p>
+      <p>Conditions: {weather.conditions}</p>
     </div>
   );
 };
